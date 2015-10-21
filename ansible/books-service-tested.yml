@@ -1,0 +1,14 @@
+- hosts: service
+  remote_user: vagrant
+  sudo: yes
+  vars:
+    - container_image: books-service-tested
+    - container_name: books-service-tested
+    - http_address: /api/v1/books
+    - has_db: true
+  roles:
+    - docker
+    - consul
+    - swarm
+    - nginx
+    - service

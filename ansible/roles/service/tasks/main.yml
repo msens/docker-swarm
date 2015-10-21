@@ -67,7 +67,7 @@
   tags: [service]
 
 - name: Container is pulled
-  shell: docker-compose pull {{ container_new_color }}
+  shell: docker-compose pull --allow-insecure-ssl {{ container_new_color }}
   args:
     chdir: "{{ compose_config_dir }}/{{ alias }}{{ container_name }}"
   environment:

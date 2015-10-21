@@ -1,5 +1,9 @@
 jenkins_base_dir: /data/jenkins
 
+directories:
+  - '{{ jenkins_directory }}/plugins'
+  - '{{ jenkins_directory }}/slaves/cd'
+
 plugins:
   - github.hpi
   - git.hpi
