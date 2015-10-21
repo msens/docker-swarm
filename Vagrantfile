@@ -7,7 +7,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.synced_folder ".", "/vagrant"
   config.vm.provider "virtualbox" do |v|
-    v.memory = 1024
+    v.memory = 2048
   end
   config.vm.provision :shell, path: "bootstrap.sh"
   config.vm.define "swarm-master" do |node|
