@@ -1,0 +1,6 @@
+- hosts: registry
+  serial: 1
+  remote_user: vagrant
+  sudo: yes
+  roles:
+    - registry

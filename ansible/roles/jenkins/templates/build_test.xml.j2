@@ -39,19 +39,19 @@
   <builders>
     <hudson.tasks.Shell>
       <command>
-sudo docker build -t 192.168.50.91:5000/{{ item.app }}-tests docker/tests/
-sudo docker push 192.168.50.91:5000/{{ item.app }}-tests
+sudo docker build -t localhost:5000/{{ item.app }}-tests docker/tests/
+sudo docker push localhost:5000/{{ item.app }}-tests
 sudo docker run -t --rm \
   -v $PWD:/source \
   -v /data/.ivy2:/root/.ivy2/cache \
-  192.168.50.91:5000/{{ item.app }}-tests
-sudo docker build -t 192.168.50.91:5000/{{ item.app }} .
-sudo docker push 192.168.50.91:5000/{{ item.app }}</command>
+  localhost:5000/{{ item.app }}-tests
+sudo docker build -t localhost:5000/{{ item.app }} .
+sudo docker push localhost:5000/{{ item.app }}</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.BuildTrigger>
-      <childProjects>{{ item.app }}-deployment</childProjects>
+      <childProjects>{{ item.app }}</childProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
