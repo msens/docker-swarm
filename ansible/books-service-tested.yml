@@ -11,4 +11,5 @@
     - consul
     - swarm
     - nginx
+    - registry
     - service

@@ -21,12 +21,20 @@
     state: absent
   tags: [swarm]
 
-- name: Configuration is present
+- name: Configuration is present on node
   copy:
     src: docker.cfg
     dest: /etc/default/docker
   register: config_result
   when: not swarm_master is defined
+  tags: [swarm]
+
+- name: Configuration is present on master
+  copy:
+    src: docker_master.cfg
+    dest: /etc/default/docker
+  register: config_result
+  when: swarm_master is defined
   tags: [swarm]
 
 - name: Service is restarted
