@@ -11,7 +11,7 @@ blue:
     - SERVICE_NAME={{ alias }}books-service-blue
     - DB_PORT_27017_TCP={% raw %}{{{% endraw %} key "services/mongo/{{ alias }}books-service-db" {% raw %}}}{% endraw %}
 
-  image: 10.100.199.200:5000/books-service
+  image: msens/books-service
 green:
   ports:
     - 8080
@@ -19,4 +19,4 @@ green:
     - SERVICE_NAME={{ alias }}books-service-green
     - DB_PORT_27017_TCP={% raw %}{{{% endraw %} key "services/mongo/{{ alias }}books-service-db" {% raw %}}}{% endraw %}
 
-  image: 10.100.199.200:5000/books-service
+  image: msens/books-service

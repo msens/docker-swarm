@@ -39,14 +39,14 @@
   <builders>
     <hudson.tasks.Shell>
       <command>
-sudo docker build -t localhost:5000/{{ item.app }}-tests docker/tests/
-sudo docker push localhost:5000/{{ item.app }}-tests
+sudo docker build -t {{ item.tag }}/{{ item.app }}-tests docker/tests/
+sudo docker push {{ item.tag }}/{{ item.app }}-tests
 sudo docker run -t --rm \
   -v $PWD:/source \
   -v /data/.ivy2:/root/.ivy2/cache \
-  localhost:5000/{{ item.app }}-tests
-sudo docker build -t localhost:5000/{{ item.app }} .
-sudo docker push localhost:5000/{{ item.app }}</command>
+  {{ item.tag }}/{{ item.app }}-tests
+sudo docker build -t {{ item.tag }}/{{ item.app }} .
+sudo docker push {{ item.tag }}/{{ item.app }}</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
