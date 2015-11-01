@@ -16,8 +16,8 @@ plugins:
 jenkins_jobs: [
   { src: "build.xml.j2", dest: "books-service", app: "books-service" },
   { src: "build.xml.j2", dest: "books-fe", app: "books-fe" },
-  { src: "build_test.xml.j2", dest: "books-service-test", app: "books-service", tag: "msens" }
-  { src: "build.xml.j2", dest: "books-service-tested", app: "books-service-tested" },
+  { src: "build_test.xml.j2", dest: "books-service-test", app: "books-service", tag: "msens" },
+  { src: "build.xml.j2", dest: "books-service-tested", app: "books-service-tested" }
 
 # no jenkins job to test front-end yet  { src: "build_test.xml.j2", dest: "books-fe-test", app: "books-fe" }
 ]
