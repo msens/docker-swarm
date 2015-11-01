@@ -51,7 +51,7 @@ sudo docker push {{ item.tag }}/{{ item.app }}</command>
   </builders>
   <publishers>
     <hudson.tasks.BuildTrigger>
-      <childProjects>{{ item.app }}</childProjects>
+      <childProjects>{{ item.app }}-tested</childProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
