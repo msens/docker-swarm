@@ -23,9 +23,14 @@ to this:
 
 # For demonstration purposes
 
-Up the VMs:
+Up the four VMs:
 ```ruby
 vagrant up
+```
+
+Login to swarm-master VM
+```ruby
+vagrant ssh swarm-master
 ```
 
 Provision the complete environment:
@@ -34,11 +39,9 @@ ansible-playbook /vagrant/ansible/infra.yml -i /vagrant/ansible/hosts/prod
 ```
 
 See what’s in our cluster (consul):
-```ruby
-Terminal: `consul members`
-REST: `curl localhost:8500/v1/catalog/nodes | jq .`
-UI: `http://10.100.199.200:8500/ui/`
-```
+- Commandline: `consul members`
+- REST: `curl localhost:8500/v1/catalog/nodes | jq .`
+- UI: `http://10.100.199.200:8500/ui/`
 
 Docker Swarm connect
 ```ruby
