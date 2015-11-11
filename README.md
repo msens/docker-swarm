@@ -21,31 +21,32 @@ to this:
 ```
 
 
-###### For demonstration purposes (Through Terminal)
+# For demonstration purposes (Through Terminal)
 
 Up the VMs:
 ```ruby
 vagrant up
 ```
 
-Provision the complete environment
+Provision the complete environment:
 ```ruby
 ansible-playbook /vagrant/ansible/infra.yml -i /vagrant/ansible/hosts/prod
 ```
 
-See what’s in our cluster (consul)
+See what’s in our cluster (consul):
+```ruby
 Terminal: `consul members`
 REST: `curl localhost:8500/v1/catalog/nodes | jq .`
 UI: `http://10.100.199.200:8500/ui/`
+```
 
-
-Docker Swarm
+Docker Swarm connect
 ```ruby
 export DOCKER_HOST=tcp://0.0.0.0:2375
 docker info
 ```
 
-deploy book service backend (straight from docker hub)
+deploy book service backend using Ansible (coming straight from docker hub)
 ```ruby
 ansible-playbook /vagrant/ansible/books-service.yml -i /vagrant/ansible/hosts/prod
 ```
@@ -76,12 +77,12 @@ Deploy the front-end to bookservices (docker container)
 ansible-playbook /vagrant/ansible/books-fe.yml -i /vagrant/ansible/hosts/prod
 ```
 
-See where it is deployed to  (repeat previous step and perform this step again to see that containers are moving)
+See where it is deployed to  (repeat previous step, perform this step again and see containers moving)
 ```ruby
 docker ps | grep booksservice
 ```
 
-Now prepare Jekins
+Now prepare Jenkins
 ```ruby
 docker login 
 ```
