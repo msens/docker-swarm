@@ -43,7 +43,7 @@ See what’s in our cluster (consul):
 - REST: `curl localhost:8500/v1/catalog/nodes | jq .`
 - UI: `http://10.100.199.200:8500/ui/`
 
-Docker Swarm connect
+Connect docker client to Docker Swarm
 ```ruby
 export DOCKER_HOST=tcp://0.0.0.0:2375
 docker info
