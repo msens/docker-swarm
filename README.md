@@ -120,14 +120,14 @@ In Jenkins setup a manual cd node (did not yet come to automate this):
 
 #### Explanation
 There are four jobs predefined
-- books-fe - Deploy books front-end by running Ansible Playbook to our cluster
-- books-service - Deploy books front-end by running Ansible Playbook to our cluster
-- books-service-test - pull booksservice source code from github, compile, TEST, build container and push to docker repo, run tests, build, compile and push final code to docker repo.
-- books-service-tested - downstream job pulling code pushed to docker repo and use Ansible to deploy.
+- *books-fe* - Deploy books front-end by running Ansible Playbook to our cluster
+- *books-service* - Deploy books front-end by running Ansible Playbook to our cluster
+- *books-service-test* - pull booksservice source code from github, compile, TEST, build container and push to docker repo, run tests, build, compile and push final code to docker repo.
+- *books-service-tested* - downstream job pulling code pushed to docker repo and use Ansible to deploy.
 
 Now, to see how it works, do the following:
-- run books-service-test - see that tests are run on backend code, and when ok how new docker container is build and pushed to docker repo.
-- run books-service-tested - run ansible playbook which will pull the tested container from docker repo and deploy into cluster.
+- run *books-service-test* - see that tests are run on backend code, and when ok how new docker container is build and pushed to docker repo.
+- run *books-service-tested* - run ansible playbook which will pull the tested container from docker repo and deploy into cluster.
 
 #### Now update source code for booksservice 
 ```ruby
