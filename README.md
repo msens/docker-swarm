@@ -93,17 +93,17 @@ Open Jenkins UI:
 http://10.100.199.200:8080/
 ```
 In Jenkins setup a manual cd node (did not yet come to automate this):
-```ruby
-Click Manage Jenkins > Manage Nodes > New Node
-Name it cd, select Dumb Slave and click OK
-Type /data/jenkins/slaves/cd as Remote Root Directory
-Type 10.100.199.200 as Host
-Select Launch slave agents on Unix machines via SSH
-Click Add* next to **Credentials
-Use vagrant as both Username and Password and click Add
-Click Save
 
-```
+- Click Manage Jenkins > Manage Nodes > New Node
+- Name it cd, select Dumb Slave and click OK
+- Type /data/jenkins/slaves/cd as Remote Root Directory
+- Type 10.100.199.200 as Host
+- Select Launch slave agents on Unix machines via SSH
+- Click Add* next to **Credentials
+- Use vagrant as both Username and Password and click Add
+- Click Save
+
+
 
 
 
