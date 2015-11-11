@@ -19,3 +19,71 @@ to this:
 ```ruby
   config.vm.synced_folder ".", "/vagrant", mount_options: [“dmode=700,fmode=600″]
 ```
+
+
+###### For demonstration purposes (Through Terminal)
+
+Up the VMs:
+```ruby
+vagrant up
+```
+
+Provision the complete environment
+```ruby
+ansible-playbook /vagrant/ansible/infra.yml -i /vagrant/ansible/hosts/prod
+```
+
+See what’s in our cluster (consul)
+Terminal: `consul members`
+REST: `curl localhost:8500/v1/catalog/nodes | jq .`
+UI: `http://10.100.199.200:8500/ui/`
+
+
+Docker Swarm
+```ruby
+export DOCKER_HOST=tcp://0.0.0.0:2375
+docker info
+```
+
+deploy book service backend (straight from docker hub)
+```ruby
+ansible-playbook /vagrant/ansible/books-service.yml -i /vagrant/ansible/hosts/prod
+```
+
+See where it is deployed to (notice that service backend is deployed to different node than mongo db):
+```ruby
+docker ps | grep booksservice
+```
+
+See what’s located in the database:
+```ruby
+curl http://10.100.199.200/api/v1/books | jq .
+```
+
+Let’s add and see books to the backend-server!
+```ruby
+curl -H 'Content-Type: application/json' -X PUT -d '{"_id": 1, "title": "My First Book", "author": "John Doe", "description": "Not a very good book"}' http://10.100.199.200/api/v1/books | jq .
+
+curl -H 'Content-Type: application/json' -X PUT -d '{"_id": 2, "title": "My Second Book", "author": "John Doe", "description": "Not a bad as the first book"}' http://10.100.199.200/api/v1/books | jq .
+
+curl -H 'Content-Type: application/json' -X PUT -d '{"_id": 3, "title": "My Third Book", "author": "John Doe", "description": "Failed writers club"}' http://10.100.199.200/api/v1/books | jq .
+
+curl http://10.100.199.200/api/v1/books | jq .
+```
+
+Deploy the front-end to bookservices (docker container)
+```ruby
+ansible-playbook /vagrant/ansible/books-fe.yml -i /vagrant/ansible/hosts/prod
+```
+
+See where it is deployed to  (repeat previous step and perform this step again to see that containers are moving)
+```ruby
+docker ps | grep booksservice
+```
+
+Now prepare Jekins
+```ruby
+docker login 
+```
+
+

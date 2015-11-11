@@ -99,7 +99,7 @@
   tags: [service]
 
 - name: Simulate testing
-  shell: sleep 15
+  shell: sleep 5
   tags: [service]
 
 - debug: var=services/{{ alias }}{{ container_name }}/color
