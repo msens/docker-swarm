@@ -134,7 +134,7 @@ Now, to see how it works, do the following:
 clone https://github.com/msens/books-service
 ```
 update code in /src/main/scala/com/technologyconversations/api/ServiceActor.scala
-change versionnumber in:
+change books to comics, like so:
 ```scala
 val serviceRoute = pathPrefix("api" / "v1" / "books") {
     path("_id" / IntNumber) { id =>
@@ -149,7 +149,7 @@ val serviceRoute = pathPrefix("api" / "v1" / "books") {
 
 to 
 ```scala
-val serviceRoute = pathPrefix("api" / "v10000000000" / "books") {
+val serviceRoute = pathPrefix("api" / "v1" / "comics") {
     path("_id" / IntNumber) { id =>
       get {
         complete(
