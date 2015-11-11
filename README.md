@@ -86,9 +86,11 @@ docker ps | grep books
 ```
 
 Now, the following should be accessible:
-- consul: http://10.100.199.200:8500/ui/#/dc1/services
+- consul: http://10.100.199.200:8500/ui/#/dc1/nodes/swarm-master
 - jenkins: http://10.100.199.200:8080/
-
+- local docker repo (not actively used): http://10.100.199.200:5000/v1/search
+- books front-end: http://10.100.199.200/#/page/books
+- books back-end: http://10.100.199.200/api/v1/books
 
 
 # Demo Jenkins in this cluster 
