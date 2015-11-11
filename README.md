@@ -94,7 +94,11 @@ Now, the following should be accessible:
 
 
 # Demo Jenkins in this cluster 
-To allow infrastructure to login to your public docker repo:
+
+#### Set up the system
+
+To allow infrastructure to login to your public docker repo.
+This will save you login credentials in /home/vagrant/.docker/config.json
 ```ruby
 docker login 
 ```
@@ -113,6 +117,23 @@ In Jenkins setup a manual cd node (did not yet come to automate this):
 - Click Add* next to **Credentials
 - Use vagrant as both Username and Password and click Add
 - Click Save
+
+#### Explanation
+There are four jobs predefined
+- books-fe - Deploy books front-end by running Ansible Playbook to our cluster
+- books-service - Deploy books front-end by running Ansible Playbook to our cluster
+- books-service-test - pull booksservice source code from github, compile, TEST, build container and push to docker repo, run tests, build, compile and push final code to docker repo.
+- books-service-tested - downstream job pulling code pushed to docker repo and use Ansible to deploy.
+
+Now, to see how it works, do the following:
+- run books-service-test - see that tests are run, and when ok how new docker container is build and pushed to repo for backend code.
+- run books-service-tested - run ansible playbook which will pull the tested container from docker repo and deploy in cluster.
+
+github source code for books-service that is being pulled: 
+
+
+
+
 
 
 
