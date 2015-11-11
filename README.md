@@ -82,8 +82,14 @@ ansible-playbook /vagrant/ansible/books-fe.yml -i /vagrant/ansible/hosts/prod
 
 See where it is deployed to  (repeat previous step, perform this step again and see containers moving)
 ```ruby
-docker ps | grep booksservice
+docker ps | grep books
 ```
+
+Now, the following should be accessible:
+- consul: http://10.100.199.200:8500/ui/#/dc1/services
+- jenkins: http://10.100.199.200:8080/
+
+
 
 # Demo Jenkins in this cluster 
 To allow infrastructure to login to your public docker repo:
