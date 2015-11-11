@@ -135,8 +135,8 @@ Clone repository to your local system
 ```ruby
 git clone https://github.com/msens/books-service
 ```
-update code in /src/main/scala/com/technologyconversations/api/ServiceActor.scala
-change books to comics, like so:
+
+update code in /src/main/scala/com/technologyconversations/api/ServiceActor.scala, change books to comics, like so:
 ```scala
 val serviceRoute = pathPrefix("api" / "v1" / "books") {
     path("_id" / IntNumber) { id =>
@@ -166,6 +166,9 @@ Push the update
 ```ruby
 git push
 ```
+
+Now, run this job again and see it fail. No container buidl or deployment will follow:
+- run **books-service-test** - see test fail. No container will be build, no downstream job will run.
 
 
 
