@@ -21,7 +21,7 @@ to this:
 ```
 
 
-# For demonstration purposes (Through Terminal)
+# For demonstration purposes
 
 Up the VMs:
 ```ruby
@@ -82,9 +82,28 @@ See where it is deployed to  (repeat previous step, perform this step again and 
 docker ps | grep booksservice
 ```
 
-Now prepare Jenkins
+# Demo Jenkins in this cluster 
+To allow infrastructure to login to your public docker repo:
 ```ruby
 docker login 
 ```
+
+Open Jenkins UI:
+```ruby
+http://10.100.199.200:8080/
+```
+In Jenkins setup a manual cd node (did not yet come to automate this):
+```ruby
+Click Manage Jenkins > Manage Nodes > New Node
+Name it cd, select Dumb Slave and click OK
+Type /data/jenkins/slaves/cd as Remote Root Directory
+Type 10.100.199.200 as Host
+Select Launch slave agents on Unix machines via SSH
+Click Add* next to **Credentials
+Use vagrant as both Username and Password and click Add
+Click Save
+
+```
+
 
 
