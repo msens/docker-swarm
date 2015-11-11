@@ -130,8 +130,10 @@ Now, to see how it works, do the following:
 - run **books-service-tested** - run ansible playbook which will pull the tested container from docker repo and deploy into cluster.
 
 #### Now update source code for booksservice 
+
+Clone repository to your local system
 ```ruby
-clone https://github.com/msens/books-service
+git clone https://github.com/msens/books-service
 ```
 update code in /src/main/scala/com/technologyconversations/api/ServiceActor.scala
 change books to comics, like so:
@@ -160,6 +162,10 @@ val serviceRoute = pathPrefix("api" / "v1" / "comics") {
       }
 ```
 
+Push the update
+```ruby
+git push
+```
 
 
 
