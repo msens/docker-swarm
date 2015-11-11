@@ -126,10 +126,39 @@ There are four jobs predefined
 - books-service-tested - downstream job pulling code pushed to docker repo and use Ansible to deploy.
 
 Now, to see how it works, do the following:
-- run books-service-test - see that tests are run, and when ok how new docker container is build and pushed to repo for backend code.
-- run books-service-tested - run ansible playbook which will pull the tested container from docker repo and deploy in cluster.
+- run books-service-test - see that tests are run on backend code, and when ok how new docker container is build and pushed to docker repo.
+- run books-service-tested - run ansible playbook which will pull the tested container from docker repo and deploy into cluster.
 
-github source code for books-service that is being pulled: 
+#### Now update source code for booksservice 
+```ruby
+clone https://github.com/msens/books-service
+```
+update code in /src/main/scala/com/technologyconversations/api/ServiceActor.scala
+change versionnumber in:
+```scala
+val serviceRoute = pathPrefix("api" / "v1" / "books") {
+    path("_id" / IntNumber) { id =>
+      get {
+        complete(
+          grater[Book].asObject(
+            collection.findOne(MongoDBObject("_id" -> id)).get
+          )
+        )
+      }
+```
+
+to 
+```scala
+val serviceRoute = pathPrefix("api" / "v10000000000" / "books") {
+    path("_id" / IntNumber) { id =>
+      get {
+        complete(
+          grater[Book].asObject(
+            collection.findOne(MongoDBObject("_id" -> id)).get
+          )
+        )
+      }
+```
 
 
 
