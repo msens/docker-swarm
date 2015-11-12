@@ -33,7 +33,7 @@ Login to swarm-master VM
 vagrant ssh swarm-master
 ```
 
-Provision the complete environment:
+Provision the complete **cluster environment**:
 ```ruby
 ansible-playbook /vagrant/ansible/infra.yml -i /vagrant/ansible/hosts/prod
 ```
@@ -49,7 +49,7 @@ export DOCKER_HOST=tcp://0.0.0.0:2375
 docker info
 ```
 
-deploy book service backend using Ansible (coming straight from docker hub)
+deploy book service **backend** using Ansible (coming straight from docker hub)
 ```ruby
 ansible-playbook /vagrant/ansible/books-service.yml -i /vagrant/ansible/hosts/prod
 ```
@@ -75,7 +75,7 @@ curl -H 'Content-Type: application/json' -X PUT -d '{"_id": 3, "title": "My Thir
 curl http://10.100.199.200/api/v1/books | jq .
 ```
 
-Deploy the front-end to bookservices (docker container)
+Deploy the booksservice **front-end** (docker container)
 ```ruby
 ansible-playbook /vagrant/ansible/books-fe.yml -i /vagrant/ansible/hosts/prod
 ```
@@ -129,7 +129,7 @@ Now, to see how it works, do the following:
 - run **books-service-test** - see that tests are run on backend code, and when ok how new docker container is build and pushed to docker repo.
 - run **books-service-tested** - run ansible playbook which will pull the tested container from docker repo and deploy into cluster.
 
-#### Now update source code for booksservice 
+#### Now update (and break) source code for booksservice 
 
 Clone repository to your local system
 ```ruby
