@@ -3,4 +3,4 @@
 - include: swarm.yml
 - include: nginx.yml
 - include: consul.yml
-- include: registry.yml
+# - include: registry.yml
